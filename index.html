@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- کدهای آیکون سایت شما -->
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Lalezar&family=Space+Mono:wght@400;700&family=UnifrakturMaguntia&family=Vazirmatn:wght@400;500;600;700;800&display=swap">
+<title>erfanXstudio // ARCHIVE & DIGITAL LOGIC</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/sections.css">
+<link rel="stylesheet" href="css/modals.css">
+</head>
+<body>
+
+<div id="scroll-progress-track"></div>
+<div id="scroll-progress"></div>
+
+<!-- PAGE LOADER -->
+<div id="page-loader">
+  <div class="loader-cyber-sq"></div>
+  <div class="loader-text-cyber">SYSTEM LOADING...</div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <nav class="nav">
+    <div class="desktop-nav">
+      <a class="logo" href="#top">erfanXstudio<span class="dot">.</span></a>
+      <div class="navlinks-desktop">
+        <a href="javascript:void(0)" onclick="openToolsFromMenu()" data-en="Tools">ابزارها</a>
+        <a href="#drops" data-en="Collections">کالکشن‌ها</a>
+        <a href="#shop" data-en="Visual Archive">آرشیو بصری</a>
+        <a href="#about" data-en="Biography">بیوگرافی</a>
+        <a href="#news" data-en="Contact">ارتباط</a>
+      </div>
+      <button class="lang-toggle-btn" id="langToggleDesktop" onclick="toggleLang()">EN</button>
+    </div>
+
+    <!-- موبایل ناوبری -->
+    <div class="mobile-nav">
+      <div class="nav-group-left">
+        <button class="lang-toggle-btn" id="langToggleMobile" onclick="toggleLang()">EN</button>
+        <div class="header-texts-mobile">
+          <span class="header-text" id="iranTime">...</span>
+          <span class="header-text" id="iranDate">...</span>
+        </div>
+      </div>
+      <div class="nav-group-right">
+        <a class="logo" href="#top">erfanXstudio<span class="dot">.</span></a>
+        <button aria-label="منو" data-en-aria="Menu" class="burger" id="burger" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- MOBILE MENU (OVERLAY) -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="javascript:void(0)" onclick="toggleMenu(); openToolsFromMenu();" data-en="Tools">ابزارها</a>
+  <a href="#drops" onclick="toggleMenu()" data-en="My Projects">پروژه ها</a>
+  <a href="#shop" onclick="toggleMenu()" data-en="Image Gallery"> گالری تصاویر</a>
+  <a href="#about" onclick="toggleMenu()" data-en="Biography">بیوگرافی</a>
+  <a href="#news" onclick="toggleMenu()" data-en="Contact">ارتباط</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-card">
+    <h1 style="font-family: 'Anton', sans-serif; letter-spacing: 1px; font-size: clamp(32px, 8vw, 55px); text-transform: uppercase; margin-bottom: 5px;">WELCOME TO THE LAB</h1>
+    
+    <div style="font-family: 'Space Mono', sans-serif; font-size: 13px; letter-spacing: 0.5px; color: #d4d4d4; margin-top: 8px; line-height: 1.8; direction: ltr; min-height: 24px;">
+      > <span id="typewriter"></span><span class="type-cursor">_</span>
+    </div>
+
+    <div id="heroTagline" style="font-family: 'Vazirmatn', sans-serif; font-size: 13px; margin-top: 8px; color: #8c8c8c; direction: rtl; font-weight: 500; line-height: 1.8;">
+        <span style="color: var(--acid); font-size: 10px; margin: 0 4px;">//</span> سیستم مدیریت هوشمند 
+        <span style="color: var(--acid); font-size: 10px; margin: 0 4px;">//</span> کدنویسی <br>
+        <span style="color: var(--acid); font-size: 10px; margin: 0 4px;">//</span> هوش مصنوعی
+        <span style="color: var(--acid); font-size: 10px; margin: 0 4px;">//</span> طراحی گرافیک
+    </div>
+    
+    <!-- HERO IMAGE WRAPPER -->
+    <div class="hero-image-wrapper" id="heroImageWrapper">
+      <div class="hero-glow-ring"></div>
+      <div class="booking-badge" id="heroBadge" onclick="event.stopPropagation(); toggleHeroFlip();" title="مشاهده بیوگرافی" data-en-title="View Biography">
+        <div class="booking-badge-inner" id="heroBadgeIcon">[?]</div>
+      </div>
+
+      <div class="hero-flip-card" id="heroFlipCard" onclick="toggleHeroFlip()">
+        <div class="hero-flip-front">
+          <img src="images/mee.jpg" alt="عرفان نعیمی" loading="eager">
+        </div>
+
+        <div class="hero-flip-back">
+          <div class="bio-content">
+            <div class="bio-title">Erfan Naeimi</div>
+            <p class="bio-text">
+              He was born on December 26, 1999 in Arak, Iran. He was graduated from Cambridge school in Turkye. He is not only an Graphic Designer, but also a professional Web Developer. He's known as Erfan araki in social media
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOCIAL & CONTACT LINKS -->
+    <div class="hero-social-links">
+      <a href="tel:09010717797" class="social-icon-btn" title="تماس تلفنی" data-en-title="Phone Call" aria-label="Phone">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      </a>
+
+      <a href="https://t.me/erfanXstudio" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="تلگرام" data-en-title="Telegram" aria-label="Telegram">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+      </a>
+
+      <a href="https://instagram.com/erfanXstudio" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="اینستاگرام" data-en-title="Instagram" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+
+      <a href="mailto:erfanXstudio@gmail.com" class="social-icon-btn" title="ایمیل" data-en-title="Email" aria-label="Email">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </a>
+    </div>
+
+    <!-- TOOL & CHAT TRIGGER BUTTONS -->
+    <div class="tools-trigger-wrapper">
+      <button id="toolsToggleBtn" class="tools-btn" onclick="toggleTools()">
+        <span data-en="Tools">ابزارها</span> <span class="icon">↓</span>
+      </button>
+      <button id="chatToggleBtn" class="tools-btn" onclick="openTerminal()">
+        <span data-en="Chat">گفتگو</span> <span class="icon">💬</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS SECTION -->
+<section class="tools-section" id="tools-section">
+ <div class="tools-section-track">
+  <div class="tools-box">
+    <button type="button" class="tools-close-btn" onclick="toggleTools()" aria-label="بستن" data-en-aria="Close" title="بستن" data-en-title="Close">✕</button>
+    <div style="margin-bottom: 25px;">
+      <h3 data-en="Tools Collection" style="color: var(--ink); font-size: 22px; font-family: 'Lalezar', sans-serif;">مجموعه ابزارها</h3>
+      <p data-en="Click on the tool you want to use" style="font-size: 13px; color: var(--grey); margin-top: 5px;">برای استفاده روی ابزار مورد نظر کلیک کنید</p>
+    </div>
+
+    <button class="tool-list-btn" onclick="toggleSpecificTool('percentToolContent', this)">
+      <span data-en="Money Percentage Calculator">ماشین‌حساب درصد پول</span> <span class="arrow">↓</span>
+    </button>
+    
+    <div class="tool-detail" id="percentToolContent" style="display: none;">
+      <div class="tools-head">
+        <h3 data-en="Quick Percentage Calculator">محاسبه سریع درصد</h3>
+        <p data-en="Calculation base: thousand Toman (x1000)">مبنای محاسبه هزار تومان (x1000)</p>
+      </div>
+      
+      <div class="calc-form">
+        <div class="input-row">
+          <div class="input-wrapper">
+            <input type="number" id="calcPercent" placeholder="درصد (%)" data-en-placeholder="Percent (%)" oninput="if(this.value.length > 2) this.value = this.value.slice(0, 2);" required>
+          </div>
+          <div class="input-wrapper">
+            <input type="text" inputmode="numeric" id="calcNumber" placeholder="عدد را وارد کنید" data-en-placeholder="Enter the number" oninput="formatNumberInput(this)" required>
+            <div id="numberMultiplierHint" class="multiplier-hint"></div>
+          </div>
+        </div>
+        
+        <div class="calc-actions">
+          <button type="button" class="calc-btn" onclick="calculatePercent()" data-en="Calculate">محاسبه</button>
+          <button type="button" class="clear-btn" onclick="clearCalc()" data-en="Clear">پاکسازی</button>
+        </div>
+      </div>
+      
+      <div class="calc-result">
+        <span data-en="Result:">نتیجه:</span>
+        <span id="calcResultDisplay">-</span>
+      </div>
+    </div>
+
+    <button class="tool-list-btn" onclick="toggleSpecificTool('ageToolContent', this)">
+      <span data-en="Age Calculator">محاسبه‌گر سن</span> <span class="arrow">↓</span>
+    </button>
+
+    <div class="tool-detail" id="ageToolContent" style="display: none;">
+      <div class="tools-head">
+        <h3 data-en="Exact Age Calculator">محاسبه دقیق سن</h3>
+        <p data-en="Calculation based on the Gregorian calendar" id="ageToolDesc">محاسبه بر اساس تقویم شمسی</p>
+      </div>
+
+      <div class="calc-form">
+        <div class="input-row">
+          <div class="input-wrapper">
+            <select id="ageDay" onchange="updateAgeDayOptions()"></select>
+          </div>
+          <div class="input-wrapper">
+            <select id="ageMonth" onchange="updateAgeDayOptions()"></select>
+          </div>
+          <div class="input-wrapper">
+            <select id="ageYear" onchange="updateAgeDayOptions()"></select>
+          </div>
+        </div>
+
+        <div class="calc-actions">
+          <button type="button" class="calc-btn" id="ageCalcBtn" onclick="calculateAge()" data-en="Calculate">محاسبه</button>
+          <button type="button" class="clear-btn" onclick="clearAgeCalc()" data-en="Clear">پاکسازی</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ </div>
+</section>
+
+<!-- AGE RESULT DETAIL MODAL -->
+<div id="ageResultModal" class="cyber-terminal-overlay" onclick="if(event.target === this) closeAgeModal();">
+  <div class="cyber-terminal-box age-modal-box">
+    <div class="terminal-header age-modal-header">
+      <button onclick="closeAgeModal()">✕</button>
+    </div>
+    <div class="age-modal-body" id="ageModalBody"></div>
+  </div>
+</div>
+
+<!-- راهنمای نصب (Install Guide) -->
+<div id="installGuideModal" class="cyber-terminal-overlay" onclick="if(event.target === this) closeInstallGuideModal();">
+  <div class="cyber-terminal-box age-modal-box install-guide-box">
+    <div class="terminal-header age-modal-header">
+      <button onclick="closeInstallGuideModal()">✕</button>
+    </div>
+    <div class="age-modal-body install-guide-body">
+      <div class="install-guide-title">
+        📲 راهنمای نصب <span id="installGuideAppName">تومان</span>
+      </div>
+      <a href="images/toman-install-guide.jpg" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="install-guide-image-link" id="installGuideImageLink">
+        <div class="install-guide-spinner" id="installGuideSpinner"></div>
+        <img alt="راهنمای نصب: باز کردن منوی مرورگر، افزودن به صفحه اصلی، تایید نصب" class="install-guide-image" id="installGuideImage">
+      </a>
+      <p class="install-guide-zoom-hint">برای بزرگ‌نماییِ تصویر روی آن ضربه بزنید</p>
+      <p class="install-guide-note">
+        بعد از دیدنِ روشِ نصب طبق تصویر بالا، روی دکمه‌ی زیر بزنید تا به سایت متصل شوید و نصب را همان‌جا انجام دهید.
+      </p>
+      <button class="btn-test-app install-guide-cta" onclick="goToInstallSite()">🔗 اتصال به سایت و نصب</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- DROPS / FOCUS AREAS -->
+<section class="section" id="drops">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-en="My Projects">پروژه ها</h2>
+      <p class="mono">erfanXstudio</p>
+    </div>
+    <div class="drops" id="dropsGrid"></div>
+  </div>
+</section>
+
+<!-- SHOP GRID / ARCHIVE ITEMS -->
+<section class="section" id="shop">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-en="Gallery">گالری</h2>
+      <span class="num" data-en="archive sections"> بخش آرشیو</span>
+    </div>
+    <div class="grid" id="productGrid"></div>
+  </div>
+</section>
+
+<!-- TALK TO THE CREATOR SECTION -->
+<section class="news" id="news">
+  <div class="wrap">
+    <h3 dir="ltr"><span>★</span> TALK TO THE CREATOR</h3>
+    <p data-en="Got a new project in mind? Write your idea and send it">پروژه جدیدی در ذهن داری؟ ایده‌ات را بنویس و ارسال کن</p>
+    <form class="news-form" onsubmit="event.preventDefault(); showToast(currentLang==='en' ? 'Your message has been sent ♦' : 'پیام شما ارسال شد ♦'); this.reset();">
+      <input type="text" placeholder="YOUR MESSAGE OR EMAIL..." required>
+      <button type="submit">&gt;</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="about">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="logo" href="#top">erfanXstudio<span class="dot">.</span></a>
+        <p data-en="A studio specialized in designing and developing digital products — from modern user interfaces to custom software systems, combining visual creativity with technical precision, and a focus on simplicity, speed, and user experience.">استودیویی متخصص در طراحی و توسعه محصولات دیجیتال — از رابط‌های کاربری مدرن تا سیستم‌های نرم‌افزاری اختصاصی، با ترکیبی از خلاقیت بصری و دقت فنی، و تمرکز بر سادگی، سرعت و تجربه‌ی کاربر.</p>
+      </div>
+      <div class="foot-col">
+        <h4 data-en="Archive">آرشیو</h4>
+        <a href="#" onclick="event.preventDefault(); document.getElementById('shop').scrollIntoView({behavior:'smooth'});" data-en="Collections">کالکشن‌ها</a>
+        <a href="#" onclick="event.preventDefault(); scrollToDropCard(1);" data-en="Web Design">طراحی وب</a>
+        <a href="#" onclick="event.preventDefault(); scrollToDropCard(4);" data-en="Hardware">سخت‌افزار</a>
+        <a href="#" onclick="event.preventDefault(); scrollToDropCard(3);" data-en="Automation">اتوماسیون</a>
+      </div>
+      
+      <div class="foot-col">
+        <h4 data-en="Info">اطلاعات</h4>
+        <a href="#" onclick="event.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'});" data-en="Contact Us">ارتباط با ما</a>
+        <a href="#" onclick="event.preventDefault(); showComingSoonToast();" data-en="Privacy Policy">حریم خصوصی</a>
+        <a href="#" onclick="event.preventDefault(); showComingSoonToast();" data-en="Distribution Terms">قوانین توزیع</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span id="footerCopyright">© All Rights Reserved <br>
+       <span>تمام حقوق برای erfanXstudio محفوظ است.</span>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- CYBERPUNK TERMINAL MODAL -->
+<div id="cyberTerminal" class="cyber-terminal-overlay">
+  <div class="cyber-terminal-box">
+    <div class="terminal-header">
+      <span>SECURE_NODE // erfanXstudio-core</span>
+      <button onclick="closeTerminal()">[X]</button>
+    </div>
+    
+    <div class="terminal-body" id="terminalBody">
+    </div>
+    
+    <div class="terminal-footer">
+      <span class="prompt-icon">
+        <span class="status-dot green"></span>
+        <span class="status-dot orange"></span>
+        <span class="status-dot red" id="offlineStatusDot"></span>
+        <button type="button" class="terminal-retry-btn" id="terminalRetryBtn" title="تلاش مجدد" data-en-title="Retry" style="display: none;">↺</button>
+      </span>
+      <input type="text" id="terminalInput" placeholder="پیام خود را وارد کنید..." autocomplete="off" onkeypress="if(event.key === 'Enter') sendTerminalMsg()">
+      <button onclick="sendTerminalMsg()">[SEND]</button>
+    </div>
+  </div>
+</div>
+
+<!-- WEB APP / GALLERY MODAL OVERLAY -->
+<div id="webAppModal" class="cyber-terminal-overlay">
+  <div class="cyber-terminal-box" style="width: 95vw; max-width: 1000px; height: 85vh;">
+    <div class="terminal-header">
+      <span id="webAppTitle">SUNLIGHT SMART // VIEW</span>
+      <button onclick="closeWebApp()">[X]</button>
+    </div>
+    <iframe id="webAppFrame" src="" style="width: 100%; height: calc(100% - 35px); border: none; background: #050506; display: none;"></iframe>
+    <div id="webAppImgWrapper" style="width: 100%; height: calc(100% - 35px); display: none; flex-direction: column; align-items: center; justify-content: center; background: #09090b; padding: 20px; position: relative;">
+      
+      <!-- LDR / SPINNER -->
+      <div id="gallerySpinner" class="gallery-spinner" style="display: none;">
+        <div class="gallery-spinner-circle"></div>
+        <div class="gallery-spinner-text" data-en="Loading image...">در حال بارگذاری تصویر...</div>
+      </div>
+
+      <div style="flex: 1; display: flex; align-items: center; justify-content: center; width: 100%; overflow: hidden; position: relative;">
+        <img id="webAppImage" src="" alt="Gallery Image" style="max-width: 100%; max-height: 100%; object-fit: contain; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 6px; box-shadow: 0 25px 60px rgba(0,0,0,0.9);">
+      </div>
+      <div id="galleryControls" style="display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 320px; margin-top: 12px; direction: rtl;">
+        <button class="slider-btn" id="galleryPrevBtn" onclick="prevGalleryImage()" data-en="Back">قبلی</button>
+        <span id="galleryCounter" style="color: var(--ink); font-family: 'Space Mono', 'Vazirmatn', sans-serif; font-size: 13px; font-weight: bold; unicode-bidi: isolate; direction: rtl;">۱ از ۴</span>
+        <button class="slider-btn" id="galleryNextBtn" onclick="nextGalleryImage()" data-en="Next">بعدی</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCROLL TO TOP BUTTON -->
+<button id="scrollTopBtn" aria-label="بازگشت به بالا" data-en-aria="Back to top" onclick="scrollToTop()">↑</button>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><span>♦</span><span id="toastMsg"></span></div>
+
+<script src="js/core.js"></script>
+<script src="js/terminal.js"></script>
+<script src="js/tools.js"></script>
+<script src="js/data-render.js"></script>
+</body>
+</html>
