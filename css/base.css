@@ -1,0 +1,545 @@
+
+:root{
+  --bone:#0A0A0B;
+  --ink:#EDEAE4;
+  --acid:#FF2D55;
+  --acid-dim:#cc2444;
+  --grey:#9c988f;
+  --line: rgba(237,234,228,0.15);
+  --radius: 2px;
+}
+
+/* =========================================================
+   راهنمای رنگ‌های پایه‌ی کل سایت (این ۷ متغیر بالا)
+   هر کدوم رو که تغییر بدی، همه‌جای سایت که ازش استفاده شده
+   عوض می‌شه — پس این ساده‌ترین و پرقدرت‌ترین جای تغییرِ رنگه.
+   =========================================================
+   --bone      → رنگ پس‌زمینه‌ی اصلیِ کل سایت (الان مشکی)
+   --ink       → رنگ اصلیِ متن‌ها و پس‌زمینه‌ی عناصر روشن مثل
+                 منوی موبایل، تولتیپ‌ها و دکمه‌های حالت هاور (الان کرم/سفید)
+   --acid      → رنگ قرمز/صورتیِ برجسته — روی دکمه‌ها، لینک‌های
+                 هاورشده، خط‌های تاکیدی، گلوی نورانی و غیره
+   --acid-dim  → حالت کمی تیره‌ترِ قرمز (مثلاً روی هاورِ لینک فوتر)
+   --grey      → رنگ خاکستری برای متن‌های کم‌اهمیت‌تر (زیرنویس‌ها)
+   --line      → رنگِ خط‌های نازکِ جداکننده‌ی بخش‌ها
+   --radius    → میزان گردیِ گوشه‌ی پیش‌فرض بعضی دکمه‌ها/باکس‌ها
+   ========================================================= */
+
+/* =========================================================
+   ۱. حذف باکس آبی هنگام لمس دکمه‌ها و لینک‌ها در موبایل
+   ========================================================= */
+*{
+  box-sizing:border-box; 
+  margin:0; 
+  padding:0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button, a, input, textarea {
+  outline: none !important;
+}
+
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bone);
+  color:var(--ink);
+  font-family:'Vazirmatn', sans-serif;
+  direction:rtl;
+  position:relative;
+  overflow-x:hidden;
+}
+
+/* ============ ENGLISH LANGUAGE OVERRIDES (FROM MY PROJECTS DOWNWARDS) ============ */
+body.lang-en #drops,
+body.lang-en #shop,
+body.lang-en #news,
+body.lang-en footer {
+  text-align: left;
+}
+
+body.lang-en .news p {
+  text-align: center;
+}
+
+body.lang-en #drops .section-head,
+body.lang-en #shop .section-head {
+  text-align: left;
+}
+
+body.lang-en .drop-card {
+  text-align: left;
+}
+
+body.lang-en .slide-text {
+  text-align: left;
+  direction: ltr;
+}
+
+body.lang-en .drop-desc-wrapper {
+  text-align: left;
+  direction: ltr;
+}
+
+body.lang-en .foot-brand p,
+body.lang-en .foot-col,
+body.lang-en .foot-col a,
+body.lang-en .foot-bottom {
+  text-align: left;
+}
+
+body.lang-en .foot-bottom {
+  direction: ltr;
+  justify-content: flex-start;
+}
+
+body.lang-en #scrollTopBtn {
+  left: auto !important;
+  right: 28px !important;
+}
+
+body.lang-en #heroTagline {
+  direction: ltr !important;
+}
+
+body.lang-en .slider-controls {
+  direction: ltr;
+}
+
+body.lang-en .drop-card-head {
+  justify-content: flex-start !important;
+  direction: ltr;
+  gap: 10px;
+}
+
+body.lang-en .drop-card-head .drop-arrow {
+  order: -1;
+  margin: 0;
+}
+
+body.lang-en .drop-footer {
+  direction: ltr;
+}
+
+/* ============ SCROLL PROGRESS BAR ============
+   راهنما: نوارِ باریکِ پیشرفتِ اسکرول، بالای صفحه.
+   - height در هر دو بخش پایین (3px) → ضخامتِ نوار
+   - background در #scroll-progress-track → رنگِ ریلِ پس‌زمینه (مشکی)
+   - background در #scroll-progress → رنگِ خودِ نوار (var(--acid))
+   ============ */
+#scroll-progress-track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 3px;
+  background: #000000;
+  z-index: 99999;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 0%;
+  height: 3px;
+  background: var(--acid);
+  z-index: 100000;
+  box-shadow: 0 0 8px var(--acid);
+  opacity: 0;
+  transition: opacity 0.2s ease, width 0.05s linear;
+}
+
+/* ============ TYPEWRITER CURSOR & GTA STARS ============
+   راهنما: مربوط به نشانگرِ چشمک‌زنِ تایپ‌رایتر و ستاره‌های سبکِ GTA کنارش.
+   - color در .type-cursor → رنگِ خطِ چشمک‌زن (var(--acid))
+   - رنگ‌های #ffffff و #171717 در gtaWantedBlink → رنگِ چشمک‌زدنِ ستاره‌ها
+   ============ */
+.type-cursor {
+  color: var(--acid);
+  animation: blink 0.8s step-end infinite;
+  font-weight: bold;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+@keyframes gtaWantedBlink {
+  0%, 49% { color: #ffffff; text-shadow: 0 0 15px rgba(255,255,255,1); }
+  50%, 100% { color: #171717; text-shadow: none; }
+}
+
+.gta-wanted-stars {
+  animation: gtaWantedBlink 0.35s infinite !important;
+}
+
+/* ============ HEADER & NAVIGATION ============
+   راهنما: نوار بالای سایت (هدر)، لوگو، لینک‌های منو، دکمه‌ی زبان، منوی موبایل.
+   - background در header → رنگِ پس‌زمینه‌ی هدر (var(--bone))
+   - padding در .nav → فاصله‌ی داخلیِ هدر
+   - font-size در .logo → اندازه‌ی متنِ لوگو
+   - color در .logo .dot → رنگِ نقطه‌ی کنار لوگو (var(--acid))
+   - padding/border-radius/font-size در .lang-toggle-btn → دکمه‌ی تغییر زبان
+   - background در .mobile-menu → رنگِ پس‌زمینه‌ی منوی موبایلِ بازشده
+   - font-size در .mobile-menu a → اندازه‌ی لینک‌های داخلِ منوی موبایل
+   ============ */
+header{
+  position:sticky; top:0; 
+  z-index:1100;
+  background:var(--bone);
+  border-bottom:2px solid var(--ink);
+  opacity: 0;
+  animation: smoothReveal 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards;
+}
+
+.nav {
+  padding: 16px 28px;
+  display: flex;
+  align-items: center;
+}
+
+.desktop-nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.navlinks-desktop { display: flex; gap:34px; font-size:13.5px; font-weight:600; }
+.navlinks-desktop a{position:relative; padding:4px 0;}
+.navlinks-desktop a::after{
+  content:""; position:absolute; right:0; bottom:0; height:2px; width:0;
+  background:var(--ink); transition:width .2s ease;
+}
+.navlinks-desktop a:hover::after{width:100%;}
+.navactions-desktop button{display:flex; align-items:center; gap:6px; font-weight:700;}
+
+.mobile-nav {
+  display: none;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-group-left, .nav-group-right {
+  display: flex; align-items: center;
+}
+.nav-group-left { gap: 10px; }
+.nav-group-right { gap: 18px; }
+
+.header-texts-mobile { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+.header-text { font-size: 11px; color: var(--grey); font-weight: 500; }
+
+.logo{
+  font-family:'UnifrakturMaguntia', 'Anton', sans-serif;
+  direction:ltr;
+  font-size:26px; letter-spacing:0.02em !important;
+  display:inline-flex; align-items:baseline; gap:6px;
+  unicode-bidi:isolate;
+}
+.logo .dot{color:var(--acid); font-size:28px; line-height:0;}
+
+.lang-toggle-btn{
+  font-family:'Space Mono', 'Vazirmatn', sans-serif;
+  font-size:12px; font-weight:700; letter-spacing:1px;
+  color:var(--ink); background:transparent;
+  border:1.5px solid var(--ink); border-radius:20px;
+  padding:6px 14px; cursor:pointer;
+  transition: all .25s ease;
+  white-space:nowrap;
+}
+.lang-toggle-btn:hover{ border-color:var(--acid); color:var(--acid); }
+.mobile-nav .lang-toggle-btn{ padding:4px 10px; font-size:11px; }
+
+.burger{
+  display: flex; flex-direction:column; gap:5px; width:22px; z-index:1200; position:relative; cursor:pointer;
+  border:none; background:none; padding:0;
+}
+.burger span{height:2px; background:var(--ink); width:100%; transition:.3s cubic-bezier(0.4, 0, 0.2, 1); transform-origin: center;}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.burger.open span:nth-child(2){opacity:0;}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+.mobile-menu{
+  position:fixed; top:0; left:0; right:0; 
+  background: #0A0A0B; z-index:1050;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding: 110px 0 35px; 
+  border-bottom: 2px solid var(--ink);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+  transform:translateY(-120%); transition:transform .4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+.mobile-menu.open{transform:translateY(0);}
+.mobile-menu a{font-family:'Lalezar', sans-serif; font-size:28px; margin: 12px 0; color:var(--ink); letter-spacing: 0.5px;}
+
+/* =========================================================
+   ۲. تنظیمات انیمیشن لودینگ پرده‌ای و مربع سایبرپانکی
+   راهنما: پرده‌ی لودینگِ اول ورود به سایت (مربعِ چشمک‌زن قبل از باز شدنِ صفحه).
+   - width/height در .loader-cyber-sq → اندازه‌ی مربعِ چشمک‌زن (36px)
+   - border/background در .loader-cyber-sq → رنگِ کادر و پرِ داخلش (var(--acid))
+   - font-size در .loader-text-cyber → اندازه‌ی متنِ زیرِ مربع
+   ========================================================= */
+#page-loader {
+  position: fixed; inset: 0; background: var(--bone); z-index: 99999;
+  display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 18px;
+  transition: transform 0.7s cubic-bezier(0.77, 0, 0.175, 1), visibility 0.7s ease;
+  will-change: transform;
+}
+#page-loader.hide-loader { 
+  transform: translateY(-100%); 
+  visibility: hidden; 
+}
+
+.loader-cyber-sq {
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--acid);
+  position: relative;
+  box-shadow: 0 0 15px rgba(255, 45, 85, 0.3);
+}
+.loader-cyber-sq::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  background: var(--acid);
+  animation: cyberFill 1.2s infinite ease-in-out;
+}
+@keyframes cyberFill {
+  0% { transform: scale(0); opacity: 0.2; }
+  50% { transform: scale(1); opacity: 1; box-shadow: 0 0 10px var(--acid); }
+  100% { transform: scale(0); opacity: 0.2; }
+}
+
+.loader-text-cyber {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--ink);
+  font-weight: 700;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes smoothReveal {
+  0% { opacity: 0; filter: blur(16px); transform: translateY(-50px) scale(0.93); }
+  100% { opacity: 1; filter: blur(0); transform: translateY(0) scale(1); }
+}
+
+body :not(.logo):not(.logo *){ letter-spacing:normal !important; text-transform:none !important; }
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:0.08;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay;
+  transform: translateZ(0);
+}
+
+@media (max-width:768px){
+  body::before{ display:none; }
+}
+
+h1,h2,h3, .display{ font-family:'Lalezar', 'Vazirmatn', sans-serif; line-height:1.15; font-weight:400; }
+.mono{font-family:'Space Mono', 'Vazirmatn', sans-serif; font-weight:500;}
+a{color:inherit; text-decoration:none;}
+button{font-family:inherit; cursor:pointer; border:none; background:none;}
+.wrap{max-width:1360px; margin:0 auto; padding:0 28px;}
+
+/* ============ TICKER ============
+   راهنما: نوارِ متنِ در حال حرکت (marquee) درست زیرِ هدر.
+   - background/color در .ticker → رنگِ پس‌زمینه و متنِ نوار
+   - height در .ticker → ارتفاعِ نوار (الان 38px)
+   - font-size در .ticker-track span → اندازه‌ی متن‌های داخلش
+   - color در .ticker-track span::before → رنگِ نشانِ لوزی‌شکل (var(--acid))
+   - عددِ «28s» در animation مربوط به .ticker-track → سرعتِ حرکتِ نوار
+   ============ */
+.ticker{
+  background:var(--ink); color:var(--bone); overflow:hidden; border-bottom:1px solid var(--ink);
+  height:38px; display:flex; align-items:center; direction: ltr; opacity: 0;
+  animation: smoothReveal 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s forwards;
+}
+.ticker-track{
+  display:flex; width: max-content; animation: scroll 28s linear infinite; will-change: transform;
+}
+.ticker-track span{
+  font-size:11px; white-space:nowrap; padding-right:50px; font-weight:700; display:flex; align-items:center; gap:12px;
+}
+.ticker-track span::before{content:"◆"; color:var(--acid); font-size:9px;}
+@keyframes scroll{ 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
+
+/* ============ HERO ============
+   راهنما: بخشِ اصلیِ معرفی (عکس پروفایل، کارتِ بیوگرافی، حلقه‌ی نورانیِ
+   دورِ عکس، و بجِ کوچکِ «رزرو نوبت»).
+   - background در .hero-card → رنگِ پس‌زمینه‌ی کارتِ بیوگرافی (#171717)
+   - width/height در .hero-image-wrapper → اندازه‌ی دایره‌ی عکس (260px)
+   - border در .hero-flip-front/.hero-flip-back → رنگ و ضخامتِ کادرِ دورِ عکس
+   - background در .hero-glow-ring → رنگ‌های گرادیانتِ حلقه‌ی نورانیِ چرخان
+     (وقتی روی عکس کلیک می‌شه و برمی‌گرده)
+   - font-size/color در .bio-title و .bio-text → عنوان و متنِ بیوگرافی
+   - width/height در .booking-badge → اندازه‌ی بجِ گرد کنارِ عکس
+   - رنگ‌های rgba(255,255,255,...) در .booking-badge → رنگِ کادر و گلوی بج
+   ============ */
+.hero {
+  position: relative; min-height: auto; display: flex; justify-content: center; align-items: center;
+  padding: 20px 20px 40px 20px; background: var(--bone); border-bottom: 2px solid var(--ink);
+}
+.hero-card {
+  background: #171717; border-radius: 24px; padding: 40px 30px 40px 30px; text-align: center;
+  width: 100%; max-width: 460px; position: relative; box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+  margin-top: 0; opacity: 0; animation: smoothReveal 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s forwards;
+}
+
+.hero-image-wrapper {
+  position: relative; 
+  width: 260px; 
+  height: 260px; 
+  margin: 25px auto 0 auto; 
+  perspective: 1000px;
+}
+
+.hero-flip-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.85s cubic-bezier(0.4, 0.2, 0.2, 1);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.hero-flip-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.hero-flip-front, .hero-flip-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border: 1px solid rgba(0,0,0,0.85);
+  box-sizing: border-box;
+}
+
+.hero-flip-front {
+  background: var(--bone);
+  overflow: hidden;
+}
+.hero-flip-front img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  border-radius: 50%; 
+}
+
+.hero-flip-back {
+  background: #0d0d11;
+  color: #EDEAE4;
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 22px;
+  border: 3px solid rgba(237, 234, 228, 0.85);
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.95);
+}
+
+/* ---- rotating glow ring (shown while flipped) ---- */
+.hero-glow-ring {
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  filter: blur(2px);
+  background: conic-gradient(from 0deg, transparent 0deg, #0A0A0B 25deg, #FF2D55 55deg, var(--acid) 85deg, transparent 130deg, transparent 360deg);
+  transition: opacity 0.5s ease;
+}
+.hero-image-wrapper.glow-on .hero-glow-ring {
+  opacity: 1;
+  animation: heroGlowSpin 2.6s linear infinite;
+}
+@keyframes heroGlowSpin {
+  to { transform: rotate(360deg); }
+}
+
+.bio-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  direction: rtl;
+}
+
+.bio-title {
+  font-family: 'Lalezar', sans-serif;
+  font-size: 22px;
+  color: var(--acid);
+  line-height: 1.2;
+}
+
+.bio-text {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 12.5px;
+  line-height: 1.75;
+  color: #EDEAE4;
+  max-width: 200px;
+  font-weight: 500;
+}
+
+.booking-badge {
+  position: absolute;
+  right: 2px;
+  bottom: 6px;
+  left: auto;
+  top: auto;
+  transform: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #0A0A0B;
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  cursor: pointer;
+  z-index: 25;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  animation: badgeOrbitBreathe 3.6s ease-in-out infinite;
+}
+
+.booking-badge:hover {
+  transform: scale(1.08);
+  border-color: rgba(255, 255, 251, 0.9);
+}
+
+.booking-badge-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 251, 0.75);
+  font-size: 12.5px;
+  font-family: 'Space Mono', 'Vazirmatn', monospace;
+  font-weight: bold;
+  user-select: none;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.booking-badge.seen {
+  animation: none;
+  box-shadow: 0 0 4px rgba(255, 252, 251, 0.3);
+  border-color: rgba(255, 255, 255, 0.65);
+}
+
+.booking-badge.seen .booking-badge-inner {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+@keyframes badgeOrbitBreathe {
+  0%, 100% { box-shadow: 0 0 4px rgba(255, 255, 255, 0.3); }
+  50% { box-shadow: 0 0 9px rgba(255, 255, 251, 0.55); }
+}
+
